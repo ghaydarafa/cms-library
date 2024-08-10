@@ -18,12 +18,12 @@
 
 <body class="font-sans text-gray-900 antialiased">
     <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100 dark:bg-gray-900">
-        <div>
-            <h1 class="text-3xl font-bold text-gray-500 dark:text-gray-100">CMS Library</h1>
+        <div class="flex justify-center">
+            <img class="h-auto w-52" src="{{ asset('images/Logo.png') }}" alt="App Logo">
         </div>
 
         <div
-            class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white dark:bg-gray-800 shadow-md overflow-hidden sm:rounded-lg">
+            class="w-full sm:max-w-md mt-4 px-6 py-4 bg-white dark:bg-gray-800 shadow-md overflow-hidden sm:rounded-lg">
             {{ $slot }}
         </div>
     </div>
