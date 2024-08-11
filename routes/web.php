@@ -32,6 +32,8 @@ Route::middleware('auth')->group(function () {
     });
 
     Route::controller(BookController::class)->group(function () {
+        Route::get('/books/excel', 'exportExcel')->name('books.export-excel');
+        Route::get('/books/pdf', 'exportPdf')->name('books.export-pdf');
         Route::get('/books', 'index')->name('books.index');
         Route::get('/books/create', 'create')->name('books.create');
         Route::post('/books', 'store')->name('books.store');

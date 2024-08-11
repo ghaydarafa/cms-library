@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\CategoriesExport;
 use App\Models\Category;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class CategoryController extends Controller
 {
@@ -104,5 +107,23 @@ class CategoryController extends Controller
 
         return redirect()->route('categories.index')
             ->with('success', 'Category deleted successfully!');
+    }
+
+    /**
+    * @return \Illuminate\Support\Collection
+    */
+    public function exportExcel()
+    {
+        return Excel::download(new CategoriesExport, 'categories.xlsx');
+    }
+
+    public function exportPdf()
+    {
+        $categories = Category::all();
+
+        $pdf = Pdf::loadView('categories.pdf', compact('categories'))
+        ->setPaper('a4', 'portrait');
+
+        return $pdf->download('categories.pdf');
     }
 }
